@@ -1,3 +1,6 @@
+*{
+    font-family: sans-serif, "Arial Narrow", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
 html {
   font-size: 14px;
 }
@@ -19,4 +22,11 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.nav-item:hover{
+    transition: transform 0.8s ease-in-out;
+    background-color: #0dcaf0;
+    border-radius: 8px;
+    font-weight: bold;
 }

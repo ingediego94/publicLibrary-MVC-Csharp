@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Un+z14x7fuS8YRhiKlKrWVMGHJulgmrg5/nMIxrq+/4=",
+  "Hash": "y9uDm4j2DtiQIzvzAXsswcVQF6988XyxgUKp0eY8F58=",
   "Source": "publicLibrary",
   "BasePath": "_content/publicLibrary",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "F:\\Programacion\\RIWI\\publicLibrary\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\publicLibrary.bundle.scp.css"
+    },
+    {
+      "Identity": "F:\\Programacion\\RIWI\\publicLibrary\\wwwroot\\bookIcon.png",
+      "SourceId": "publicLibrary",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Programacion\\RIWI\\publicLibrary\\wwwroot\\",
+      "BasePath": "_content/publicLibrary",
+      "RelativePath": "bookIcon.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\bookIcon.png"
     },
     {
       "Identity": "F:\\Programacion\\RIWI\\publicLibrary\\wwwroot\\css\\site.css",

@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\publicLibrary.bundle.scp.css"
     },
     {
+      "Id": "F:\\Programacion\\RIWI\\publicLibrary\\wwwroot\\bookIcon.png",
+      "PackagePath": "staticwebassets\\bookIcon.png"
+    },
+    {
       "Id": "F:\\Programacion\\RIWI\\publicLibrary\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

@@ -1,12 +1,12 @@
 ﻿namespace publicLibrary.Models;
 
-public interface ICrud
+public interface ICrud 
 {
     void Create();
     
     void Update();
 
-    void Read();
+    void Index();
 
     void Delete();
 }

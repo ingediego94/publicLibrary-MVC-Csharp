@@ -1,0 +1,54 @@
+﻿@model publicLibrary.Models.Client
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        
+        <form asp-action="Edit" method="post">
+            
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Id"/>
+
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DocumentNumb"></label>
+                <input asp-for="DocumentNumb" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Age"></label>
+                <input asp-for="Age" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" class="form-control"/>
+            </div>
+
+            @* No deja renderizar correctamente los BOOL *@
+            @* <div class="form-group"> *@
+            @*     <label asp-for="Status"></label> *@
+            @*     <input asp-for="Status" class="form-control"/> *@
+            @* </div> *@
+            
+            @* Toca aplicarlo como un checkbox *@
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+            <a asp-action="Index" class="btn btn-secondary mt-3">Cancel</a>
+        </form>
+    </div>
+</div>
+
+
