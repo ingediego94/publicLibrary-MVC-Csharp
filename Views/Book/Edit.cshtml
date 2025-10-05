@@ -1,0 +1,62 @@
+﻿@model publicLibrary.Models.Book
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        
+        <form asp-action="Edit" method="post">
+            
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Id"/>
+
+            @* Book Title *@
+            <div class="form-group">
+                <label asp-for="Title">Title:</label>
+                <input asp-for="Title" class="form-control"/>
+            </div>
+
+            @* Book Author *@
+            <div class="form-group">
+                <label asp-for="Author">Author:</label>
+                <input asp-for="Author" class="form-control"/>
+            </div>
+            
+            @* Book Genre *@
+            <div class="form-group">
+                <label asp-for="Genre">Genre:</label>
+                <input asp-for="Genre" class="form-control"/>
+            </div>
+            
+            @* Released Date *@
+            <div class="form-group">
+                <label asp-for="Released">Released:</label>
+                <input asp-for="Released" class="form-control" type="date"/>
+            </div>
+
+            @* Book Stock *@
+            <div class="form-group">
+                <label asp-for="Stock">Stock:</label>
+                <input asp-for="Stock" class="form-control" type="number"/>
+            </div>
+
+            @* Book Code *@
+            <div class="form-group">
+                <label asp-for="Code">Code:</label>
+                <input asp-for="Code" class="form-control" type="text"/>
+            </div>
+
+            @* Book PublishingHouse *@
+            <div class="form-group">
+                <label asp-for="PublishingHouse">Code:</label>
+                <input asp-for="PublishingHouse" class="form-control" type="text"/>
+            </div>
+
+            @* Buttons *@
+            <button type="submit" class="btn btn-primary mt-3 w-100">Save Changes</button>
+            <a asp-action="Index" class="btn btn-secondary mt-3 w-100">Cancel</a>
+        </form>
+    </div>
+</div>

@@ -12,41 +12,48 @@
             @Html.AntiForgeryToken()
             <input type="hidden" asp-for="Id"/>
 
+            @* Client Name *@
             <div class="form-group">
-                <label asp-for="Name"></label>
+                <label asp-for="Name">Name:</label>
                 <input asp-for="Name" class="form-control"/>
             </div>
 
+            @* Client DocumentNumb *@
             <div class="form-group">
-                <label asp-for="DocumentNumb"></label>
-                <input asp-for="DocumentNumb" class="form-control"/>
+                <label asp-for="DocumentNumb">Document Number:</label>
+                <input asp-for="DocumentNumb" class="form-control" type="number"/>
             </div>
 
+            @* Client Age *@
             <div class="form-group">
-                <label asp-for="Age"></label>
-                <input asp-for="Age" class="form-control"/>
+                <label asp-for="Age">Age:</label>
+                <input asp-for="Age" class="form-control" type="number"/>
             </div>
 
+            @* Client Phone *@
             <div class="form-group">
-                <label asp-for="Phone"></label>
-                <input asp-for="Phone" class="form-control"/>
+                <label asp-for="Phone">Phone:</label>
+                <input asp-for="Phone" class="form-control" type="number"/>
             </div>
 
+            @* Client Status *@
+            
             @* No deja renderizar correctamente los BOOL *@
             @* <div class="form-group"> *@
             @*     <label asp-for="Status"></label> *@
             @*     <input asp-for="Status" class="form-control"/> *@
             @* </div> *@
             
-            @* Toca aplicarlo como un checkbox *@
+            @* we must to applied as a checkbox *@
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Status" /> @Html.DisplayNameFor(model => model.Status)
                 </label>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
-            <a asp-action="Index" class="btn btn-secondary mt-3">Cancel</a>
+            @* Buttons *@
+            <button type="submit" class="btn btn-primary mt-3 w-100">Save Changes</button>
+            <a asp-action="Index" class="btn btn-secondary mt-3 w-100">Cancel</a>
         </form>
     </div>
 </div>

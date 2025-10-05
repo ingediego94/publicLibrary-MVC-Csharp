@@ -1,56 +1,62 @@
-﻿@model publicLibrary.Models.Client
+﻿@model publicLibrary.Models.Book
 
 @{
-    ViewData["Title"] = "Client Details";
+    ViewData["Title"] = "Book Details";
 }
 
-<h1>Details of Client: @Model.Name</h1>
+<h1>Details of Book: @Model.Title</h1>
 
 <div>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            Name:
+            Title:
         </dt>
         <dd class = "col-sm-10">
-            @Model.Name
+            @Model.Title
         </dd>
         
         <dt class = "col-sm-2">
-            Document:
+            Author:
         </dt>
         <dd class = "col-sm-10">
-            @Model.DocumentNumb
+            @Model.Author
         </dd>
         
         <dt class = "col-sm-2">
-            Age:
+            Genre:
         </dt>
         <dd class = "col-sm-10">
-            @Model.Age
+            @Model.Genre
         </dd>
 
         <dt class = "col-sm-2">
-            Email:
+            Released Date:
         </dt>
         <dd class = "col-sm-10">
-            @Model.Email
+            @Model.Released
         </dd>
         
         <dt class = "col-sm-2">
-            Status:
+            Stock:
         </dt>
         <dd class = "col-sm-10">
-            @Model.Status
+            @Model.Stock
         </dd>
         
         <dt class = "col-sm-2">
-            Phone:
+            Code:
         </dt>
         <dd class = "col-sm-10">
-            @Model.Phone
+            @Model.Code
         </dd>
         
+        <dt class = "col-sm-2">
+            Publishing House:
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.PublishingHouse
+        </dd>
     </dl>
 </div>
 <div>

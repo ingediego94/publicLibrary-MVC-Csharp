@@ -1,134 +1,135 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using publicLibrary.Data; // Asegúrate de que este sea el namespace de tu DbContext
-using publicLibrary.Models; // Asegúrate de que este sea el namespace de tu modelo Client
+using publicLibrary.Data;
+using publicLibrary.Models;
 
 namespace publicLibrary.Controllers;
 
-public class ClientController : Controller
+public class BookController : Controller
 {
     private readonly AppDbContext _context;
-
-    // Injection of Dependencies from AppDbContext
-    public ClientController(AppDbContext context)
+    
+    // Injection of Dependecies from AppDbContext
+    public BookController(AppDbContext context)
     {
         _context = context;
     }
-
-    
     
     
     // -----------------------------------------------------------------
-    // READ ALL: GET /Client
+    // READ ALL: GET /Book
     public async Task<IActionResult> Index()
     {
-        // Get all clients from the DB
-        var clients = await _context.clients.ToListAsync();
-        return View(clients);
+        // Get all books from DB
+        var books = await _context.books.ToListAsync();
+        return View(books);
     }
-
+    
     
     
     
     // -----------------------------------------------------------------
-    // READ ONE: GET /Client/Details/5
+    // READ ONE: GET /Book/Details/5
     public async Task<IActionResult> Details(int id)
     {
-        // Search the client by its Id
-        var client = await _context.clients
-            .FirstOrDefaultAsync(c => c.Id == id);
+        var book = await _context.books
+            .FirstOrDefaultAsync(b => b.Id == id);
 
-        if (client == null)
+        if (book == null)
             return NotFound();
-            
-        return View(client);
-    }
 
+        return View(book);
+    }
+    
+    
     
     
     
     // -----------------------------------------------------------------
-    // CREATE (GET): GET /Client/Create
+    // CREATE (GET): GET /Book/Create
     // It shows the form for a new register
     public IActionResult Create()
     {
         return View();
     }
-    
-    
-    
-    
-    
-    // -----------------------------------------------------------------
-    // CREATE (POST): POST /Client/Create
-    // Save the new client on the DB
-    
-    [HttpPost]
-    [ValidateAntiForgeryToken]      // It is a good safety practice. It's like a double validation.
-    public async Task<IActionResult> Create([Bind("Name,DocumentNumb,Age,Email,Status,Phone")]Client client)
-    {
-        if (ModelState.IsValid)
-        {
-            // Add the new client to the context
-            _context.clients.Add(client);
-            
-            // Saves the changes on the DB (INSERT)
-            await _context.SaveChangesAsync();
-            
-            return RedirectToAction(nameof(Index));
-        }
-        
-        return View(client);
-    }
 
     
     
     
+    
     // -----------------------------------------------------------------
-    // UPDATE (GET): GET /Client/Edit/5
+    // CREATE (POST): POST /Book/Create
+    // Save the new book on the DB
+
+    [HttpPost]
+    [ValidateAntiForgeryToken] // It is a good safety practice. It's like a double validation.
+    public async Task<IActionResult> Create([Bind("Title,Author,Genre,Released,Stock,Code,PublishingHouse")] Book book)
+    {
+        if (ModelState.IsValid)
+        {
+            // Add the new book to the context
+            _context.books.Add(book);
+            
+            // It saves the changes on the DB (INSERT)
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        return View(book);
+    }
+    
+    
+    
+    
+    
+    // -----------------------------------------------------------------
+    // UPDATE (GET): GET /Book/Edit/5
     // Shows the form with the data to edit
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
-        var client = await _context.clients.FindAsync(id);
+        var book = await _context.books.FindAsync(id);
         
-        if (client == null)
+        if (book == null)
             return NotFound();
             
-        return View(client);
+        return View(book);
     }
 
     
     
     
     
+    
     // -----------------------------------------------------------------
-    // UPDATE (POST): POST /Client/Edit/5
-    // Update the client on the DB
+    // UPDATE (POST): POST /Book/Edit/5
+    // Update the book on the DB
     [HttpPost]
-    [ActionName("Edit")] 
+    [ActionName("Edit")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> EditPost(int id)
     {
         // 1. It searches the object on the DB that it will be tracked by EF Core
-        var clientToUpdate = await _context.clients.FindAsync(id);
+        var bookToUpdate = await _context.books.FindAsync(id);
 
-        if (clientToUpdate == null) 
+        if (bookToUpdate == null)
             return NotFound();
-
+        
         // 2. It applies the form values to the tracked model
         //  It is recomended to use the attribute [Bind] on the GET method to list  only the properties that you want edit.
-        if (await TryUpdateModelAsync<Client>(
-                clientToUpdate,
+        if (await TryUpdateModelAsync<Book>(
+                bookToUpdate,
                 "", // Prefix (empty if there isn't prefix on the form)
-                c => c.Name, 
-                c => c.DocumentNumb, 
-                c => c.Age, 
-                c => c.Email, 
-                c => c.Status,
-                c => c.Phone
-                )
+                b => b.Title,
+                b => b.Author,
+                b => b.Genre,
+                b => b.Released,
+                b => b.Stock,
+                b => b.Code,
+                b => b.PublishingHouse
             )
+           )
         {
             try
             {
@@ -139,7 +140,7 @@ public class ClientController : Controller
             catch (DbUpdateConcurrencyException)
             {
                 // Handled of errors of concurrency 
-                if (!_context.clients.Any(c => c.Id == id))
+                if (!_context.books.Any(b => b.Id == id))
                 {
                     return NotFound();
                 }
@@ -147,9 +148,12 @@ public class ClientController : Controller
             }
         }
         // If the model it not valid or TryUpdateModelAsync fails.
-        return View(clientToUpdate);
+        return View(bookToUpdate);
     }
-
+    
+    
+    
+    
     
     
     // -----------------------------------------------------------------
@@ -161,17 +165,20 @@ public class ClientController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        // It searches the client by ID
-        var client = await _context.clients.FindAsync(id);
+        // It searches the book by ID
+        var book = await _context.books.FindAsync(id);
         
-        if (client != null)
+        if (book != null)
         {
             // Mark for deletion and save changes. 
-            _context.clients.Remove(client);
+            _context.books.Remove(book);
             await _context.SaveChangesAsync(); // (DELETE)
         }
         
         return RedirectToAction(nameof(Index));
     }
 
+    
+    
+    
 }
