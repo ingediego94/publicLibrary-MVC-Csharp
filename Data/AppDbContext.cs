@@ -30,8 +30,9 @@ public class AppDbContext : DbContext
     // To create tables on the database with EF:
     public DbSet<Client> clients { get; set; }
     public DbSet<Book> books { get; set; }
+    
     public DbSet<Loan> loans { get; set; }
-    public DbSet<LoanDetails> loansDetails { get; set; }
+
 }
 
 // Installing by terminal o as Nuggets Packages, all of them version: 9.0.0

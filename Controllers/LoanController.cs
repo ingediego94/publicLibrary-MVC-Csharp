@@ -6,12 +6,12 @@ using publicLibrary.Models;
 
 namespace publicLibrary.Controllers;
 
-public class LoanDetailsController : Controller
+public class LoanController : Controller
 {
     private readonly AppDbContext _context;
 
     // Injection of Dependencies from AppDbContext
-    public LoanDetailsController(AppDbContext context)
+    public LoanController(AppDbContext context)
     {
         _context = context;
     }
@@ -26,8 +26,8 @@ public class LoanDetailsController : Controller
 
         .Select(b => new 
             { 
-                Id = b.Id, // Usamos el Id para el valor de la opción
-                Title = b.Title // Usamos Title para el texto visible
+                Id = b.Id,              // We use Id to the option value 
+                Title = b.Title         // We use Title for the visible text
             })
             .OrderBy(b => b.Title);
         
@@ -36,17 +36,41 @@ public class LoanDetailsController : Controller
     
     
     
+    
+    // -------------------------------------------------
+    // Helper method to populate the Clients dropdown list
+    private async Task ListOfClientsDropdown(object selectedClient = null)
+    {
+        var clientsQuery = _context.clients
+
+            .Select(cl => new 
+            { 
+                Id = cl.Id,              // We use Id to the option value 
+                Name = cl.Name         // We use Title for the visible text
+            })
+            .OrderBy(cl => cl.Name);
+        
+        ViewData["ClientId"] = new SelectList(await clientsQuery.ToListAsync(), "Id", "Name", selectedClient);
+    }
+    
+    
+    
     // -----------------------------------------------------------------
-    // READ ALL: GET /LoanDetails
+    // READ ALL: GET /Loan
     public async Task<IActionResult> Index()
     {
         
-        // AÑADIR: Cargar la lista de libros antes de retornar la vista
-        await PopulateBooksDropDownList(); 
+        // ADD: Loading books list before to return view
+        await PopulateBooksDropDownList();
+        await ListOfClientsDropdown();
         
         // Get all LoanDetails from the DB
-        var loanDetails_x = await _context.loansDetails.ToListAsync();
-        return View(loanDetails_x);
+        var loans_x = await _context.loans
+            .Include(l => l.Book)
+            .Include(l => l.Client)
+            .ToListAsync();
+        
+        return View(loans_x);
     }
     
     
@@ -54,17 +78,17 @@ public class LoanDetailsController : Controller
     
     
     // -----------------------------------------------------------------
-    // READ ONE: GET /LoanDetails/Details/5
+    // READ ONE: GET /Loan/Details/5
     public async Task<IActionResult> Details(int id)
     {
         // Search the loanDetails by its Id
-        var loanDetails_x = await _context.loansDetails
-            .FirstOrDefaultAsync(ld => ld.Id == id);
+        var loans_x = await _context.loans
+            .FirstOrDefaultAsync(l => l.Id == id);
 
-        if (loanDetails_x == null)
+        if (loans_x == null)
             return NotFound();
             
-        return View(loanDetails_x);
+        return View(loans_x);
     }
     
     
@@ -73,39 +97,43 @@ public class LoanDetailsController : Controller
     
         
     // -----------------------------------------------------------------
-    // CREATE (GET): GET /LoanDetails/Create
+    // CREATE (GET): GET /Loan/Create
     // It shows the form for a new register
-    public async Task<IActionResult> Create()
-    {
-        await PopulateBooksDropDownList();
-        return View();
-    }
+    // public async Task<IActionResult> Create()
+    // {
+    //     await PopulateBooksDropDownList();
+    //     await ListOfClientsDropdown();
+    //     
+    //     return View();
+    // }
 
     
     
     
     
     // -----------------------------------------------------------------
-    // CREATE (POST): POST /LoanDetails/Create
-    // Save the new LoanDetail on the DB
-    
+    // CREATE (POST): POST /Loan/Create
+    // Save the new Loan on the DB
+
     [HttpPost]
-    [ValidateAntiForgeryToken]      // It is a good safety practice. It's like a double validation.
-    public async Task<IActionResult> Create([Bind("Book_Id,DevolutionDate,Amount")]LoanDetails loansDetails_y)
+    [ValidateAntiForgeryToken] // It is a good safety practice. It's like a double validation.
+    public async Task<IActionResult> Create([Bind("Client_Id,Book_Id,DevolutionDate,Amount")] Loan loan)
     {
         if (ModelState.IsValid)
         {
             // Add the new loandDetails to the context
-            _context.loansDetails.Add(loansDetails_y);
-            
+            _context.loans.Add(loan);
+
             // Saves the changes on the DB (INSERT)
             await _context.SaveChangesAsync();
-            
+
             return RedirectToAction(nameof(Index));
         }
-        
-        await PopulateBooksDropDownList(loansDetails_y.Book_Id);
-        return View(loansDetails_y);
+
+        await PopulateBooksDropDownList(loan.Book_Id);
+        await ListOfClientsDropdown(loan.Client_Id);
+
+    return View(loan);
     }
     
     
@@ -114,18 +142,19 @@ public class LoanDetailsController : Controller
     
     
     // -----------------------------------------------------------------
-    // UPDATE (GET): GET /LoanDetails/Edit/5
+    // UPDATE (GET): GET /Loan/Edit/5
     // Shows the form with the data to edit
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
-        var loansDetails_y = await _context.loansDetails.FindAsync(id);
+        var loans_x = await _context.loans.FindAsync(id);
         
-        if (loansDetails_y == null)
+        if (loans_x == null)
             return NotFound();
         
-        await PopulateBooksDropDownList(loansDetails_y.Book_Id);
-        return View(loansDetails_y);
+        await PopulateBooksDropDownList(loans_x.Book_Id);
+        
+        return View(loans_x);
     }
     
     
@@ -134,27 +163,28 @@ public class LoanDetailsController : Controller
     
     
     // -----------------------------------------------------------------
-    // UPDATE (POST): POST /LoanDetail/Edit/5
+    // UPDATE (POST): POST /Loan/Edit/5
     // Update the client on the DB
+    
     [HttpPost]
     [ActionName("Edit")] 
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> EditPost(int id)
     {
         // 1. It searches the object on the DB that it will be tracked by EF Core
-        var loanDetailToUpdate = await _context.loansDetails.FindAsync(id);
+        var loanToUpdate = await _context.loans.FindAsync(id);
 
-        if (loanDetailToUpdate == null) 
+        if (loanToUpdate == null) 
             return NotFound();
 
         // 2. It applies the form values to the tracked model
         //  It is recomended to use the attribute [Bind] on the GET method to list  only the properties that you want edit.
-        if (await TryUpdateModelAsync<LoanDetails>(
-                loanDetailToUpdate,
-                "", // Prefix (empty if there isn't prefix on the form)
-                lds => lds.Book_Id, 
-                lds => lds.DevolutionDate, 
-                lds => lds.Amount
+        if (await TryUpdateModelAsync<Loan>(
+                loanToUpdate,
+                "",         // Prefix (empty if there isn't prefix on the form)
+                l => l.Book_Id, 
+                l => l.DevolutionDate, 
+                l => l.Amount
             )
            )
         {
@@ -167,7 +197,7 @@ public class LoanDetailsController : Controller
             catch (DbUpdateConcurrencyException)
             {
                 // Handled of errors of concurrency 
-                if (!_context.loansDetails.Any(lds => lds.Id == id))
+                if (!_context.loans.Any(lds => lds.Id == id))
                 {
                     return NotFound();
                 }
@@ -175,8 +205,8 @@ public class LoanDetailsController : Controller
             }
         }
         // If the model it not valid or TryUpdateModelAsync fails.
-        await PopulateBooksDropDownList(loanDetailToUpdate.Book_Id); 
-        return View(loanDetailToUpdate);
+        await PopulateBooksDropDownList(loanToUpdate.Book_Id); 
+        return View(loanToUpdate);
     }
     
     
@@ -184,7 +214,7 @@ public class LoanDetailsController : Controller
     
     
     // -----------------------------------------------------------------
-    // DELETE (POST): POST /LoanDetails/DeleteConfirmed/5
+    // DELETE (POST): POST /Loan/DeleteConfirmed/5
     // It deletes the LoanDetail of DB
     // By convention, it's better using two actions: Delete (GET to confirm) and DeleteConfirmed (POST to execute)
     
@@ -193,13 +223,13 @@ public class LoanDetailsController : Controller
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         // It searches the LoanDetail by ID
-        var loanDetails_y = await _context.loansDetails.FindAsync(id);
+        var loan_x = await _context.loans.FindAsync(id);
         
-        if (loanDetails_y != null)
+        if (loan_x != null)
         {
             // Mark for deletion and save changes. 
-            _context.loansDetails.Remove(loanDetails_y);
-            await _context.SaveChangesAsync(); // (DELETE)
+            _context.loans.Remove(loan_x);
+            await _context.SaveChangesAsync();          // (DELETE)
         }
         
         return RedirectToAction(nameof(Index));

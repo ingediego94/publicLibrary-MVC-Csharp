@@ -7,7 +7,7 @@ public class Client : Person
     public string Email { get; set; }
     public bool Status { get; set; }
     public string Phone { get; set; }
-    
+    public string Name { get; set; }
     // Relation 1:N with the other table (Loans):
     public ICollection<Loan> Loans { get; set; } = new List<Loan>();
 }

@@ -8,7 +8,7 @@ public class Book : Content
     public string Code { get; set; }
     public int Stock { get; set; }
     public DateOnly Released { get; set; }
-    
-    // Relation 1:N with the other table (LoanDetails):
-    public ICollection<LoanDetails> LoansDetails { get; set; } = new List<LoanDetails>();
+    public string Title { get; set; }
+    // Relation 1:N with the other table (Loan):
+    public ICollection<Loan> Loans { get; set; } = new List<Loan>();
 }

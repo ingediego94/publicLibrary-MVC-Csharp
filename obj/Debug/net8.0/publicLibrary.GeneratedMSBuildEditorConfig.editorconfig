@@ -17,71 +17,71 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = publicLibrary
 build_property.RootNamespace = publicLibrary
-build_property.ProjectDir = F:\Programacion\RIWI\publicLibrary\
+build_property.ProjectDir = /home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\Programacion\RIWI\publicLibrary
+build_property.MSBuildProjectDirectory = /home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp
 build_property._RazorSourceGeneratorDebug = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/Book/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xEZXRhaWxzLmNzaHRtbA==
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Book/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9vay9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/Book/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xFZGl0LmNzaHRtbA==
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Book/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9vay9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/Book/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xJbmRleC5jc2h0bWw=
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Book/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9vay9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/Client/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XERldGFpbHMuY3NodG1s
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Client/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xpZW50L0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/Client/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XEVkaXQuY3NodG1s
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Client/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xpZW50L0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/Client/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XEluZGV4LmNzaHRtbA==
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Client/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2xpZW50L0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/LoanDetails/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9hbkRldGFpbHNcRWRpdC5jc2h0bWw=
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Loan/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9hbi9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/LoanDetails/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9hbkRldGFpbHNcSW5kZXguY3NodG1s
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Loan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9hbi9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programacion/RIWI/publicLibrary/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-5s0o62o38s
+[/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-c6b19m9qay
