@@ -1,0 +1,106 @@
+﻿@model IEnumerable<publicLibrary.Models.LoanDetails>
+
+<h1>Loan Details List</h1>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                
+                @* modify this 'asp-action="Create" for the specific method to creating *@
+                <form asp-action="Create">
+                    <h5>Adding a new Loan Detail</h5>
+
+                    @* LoanDetails Book_Id *@
+                    <div class="mt-3 d-flex flex-column">
+                        <label for="Book_Id">Book Id</label>
+                        <select id="Book_Id"
+                                class="form-control"
+                                name="Book_Id"
+                                asp-items="@(ViewData["BookId"] as SelectList)"
+                                required>
+                            <option value="">-- Select a book --</option>
+                        </select>
+                        
+                        
+                    </div>
+                    
+                    
+                    
+                    @* <div class="mt-3 d-flex flex-column"> *@
+                    @*     <label for="Book_Id">Book Title</label> *@
+                    @*     <select id="Book_Id" class="form-control" name="Book_Id" required> *@
+                    @*         <option value="">-- Select a book --</option> *@
+                    @*         @foreach (var bk in ViewBag.Book as List<publicLibrary.Models.Book>) *@
+                    @*         { *@
+                    @*             <option value="@bk.Id">@bk.Title</option> *@
+                    @*         } *@
+                    @*     </select> *@
+                    @* </div> *@
+
+                    @* LoanDetails Devolution Date *@
+                    <div class="mt-3 d-flex flex-column">
+                        <label for="DevolutionDate">Devolution Date:</label>
+                        <input id="DevolutionDate" type="date" class="form-control" name="DevolutionDate" required>
+                    </div>
+
+                    @* LoanDetails Amount *@
+                    <div class="mt-3 d-flex flex-column">
+                        <label for="Amount">Amount</label>
+                        <input id="Amount" type="number" class="form-control" name="Amount" required>
+                    </div>
+
+
+                    <hr>
+                    <button type="submit" class="btn btn-success w-100">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>    
+    
+    
+    <div class="col-md-9">
+    
+        <table class="table table-striped">
+            <!--Headers-->
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">BOOK ID</th>
+                    <th scope="col">DEVOLUTION DATE</th>
+                    <th scope="col">AMOUNT</th>
+                    <th scope="col">ACTIONS</th>
+                </tr>
+            </thead>
+    
+            <!--Body-->
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Book_Id</td>
+                    <td>@item.DevolutionDate</td>
+                    <td>@item.Amount</td>
+                    <td class="d-flex flex-row gap-1">
+                        <a class="btn btn-primary w-100" asp-action="Details" asp-controller="LoanDetails" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-warning w-100" asp-action="Edit" asp-controller="LoanDetails" asp-route-id="@item.Id">Edit</a>
+                        <form asp-action="Delete" asp-route-id="@item.Id" asp-controller="LoanDetails" method="post" style="display: inline">
+                            @Html.AntiForgeryToken()
+    
+                            <button type="submit"
+                                    class="btn btn-danger w-100"
+                                    onclick="return confirm('¿Do you want to delete this Loan Detail?');">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            </tbody>
+    
+        </table>
+    </div>
+    
+</div>
