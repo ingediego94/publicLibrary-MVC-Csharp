@@ -133,7 +133,13 @@ public class LoanController : Controller
         await PopulateBooksDropDownList(loan.Book_Id);
         await ListOfClientsDropdown(loan.Client_Id);
 
-    return View(loan);
+        // 2. Obtener la lista de préstamos existentes para renderizar la tabla
+        var loans_x = await _context.loans
+            .Include(l => l.Book)
+            .Include(l => l.Client)
+            .ToListAsync();
+        
+    return View("Index", loans_x);
     }
     
     
