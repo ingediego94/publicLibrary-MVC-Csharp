@@ -1,43 +1,43 @@
-﻿@model publicLibrary.Models.Loan
-
-@{
-    ViewData["Title"] = "Edit";
-}
-
-<div class="row">
-    <div class="col-md-4">
-        
-        <form asp-action="Edit" method="post">
-            
-            @Html.AntiForgeryToken()
-            <input type="hidden" asp-for="Id"/>
-            
-            <div class="form-group">
-                <label asp-for="Book_Id">Book:</label>
-        
-                <select asp-for="Book_Id" 
-                        class="form-control" 
-                        asp-items="@(ViewData["BookId"] as SelectList)">
-                    <option value="">-- Select a book --</option>
-                </select>
-            </div>
-
-            @* LoanDetails DevolutionDate *@
-            <div class="form-group">
-                <label asp-for="DevolutionDate">Devolution Date:</label>
-                <input asp-for="DevolutionDate" class="form-control" type="date"/>
-            </div>
-
-            @* LoanDetails Amount *@
-            <div class="form-group">
-                <label asp-for="Amount">Amount:</label>
-                <input asp-for="Amount" class="form-control" type="number"/>
-            </div>
-            
-
-            @* Buttons *@
-            <button type="submit" class="btn btn-primary mt-3 w-100">Save Changes</button>
-            <a asp-action="Index" class="btn btn-secondary mt-3 w-100">Cancel</a>
-        </form>
-    </div>
-</div>
+﻿@* @model publicLibrary.Models.Loan *@
+@* *@
+@* @{ *@
+@*     ViewData["Title"] = "Edit"; *@
+@* } *@
+@* *@
+@* <div class="row"> *@
+@*     <div class="col-md-4"> *@
+@*          *@
+@*         <form asp-action="Edit" method="post"> *@
+@*              *@
+@*             @Html.AntiForgeryToken() *@
+@*             <input type="hidden" asp-for="Id"/> *@
+@*              *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Book_Id">Book:</label> *@
+@*          *@
+@*                 <select asp-for="Book_Id"  *@
+@*                         class="form-control"  *@
+@*                         asp-items="@(ViewData["BookId"] as SelectList)"> *@
+@*                     <option value="">-- Select a book --</option> *@
+@*                 </select> *@
+@*             </div> *@
+@* *@
+@*             $1$ LoanDetails DevolutionDate #1# *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="DevolutionDate">Devolution Date:</label> *@
+@*                 <input asp-for="DevolutionDate" class="form-control" type="date"/> *@
+@*             </div> *@
+@* *@
+@*             $1$ LoanDetails Amount #1# *@
+@*             <div class="form-group"> *@
+@*                 <label asp-for="Amount">Amount:</label> *@
+@*                 <input asp-for="Amount" class="form-control" type="number"/> *@
+@*             </div> *@
+@*              *@
+@* *@
+@*             $1$ Buttons #1# *@
+@*             <button type="submit" class="btn btn-primary mt-3 w-100">Save Changes</button> *@
+@*             <a asp-action="Index" class="btn btn-secondary mt-3 w-100">Cancel</a> *@
+@*         </form> *@
+@*     </div> *@
+@* </div> *@

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using publicLibrary.Data;
@@ -117,7 +118,7 @@ public class LoanController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken] // It is a good safety practice. It's like a double validation.
-    public async Task<IActionResult> Create([Bind("Client_Id,Book_Id,DevolutionDate,Amount")] Loan loan)
+    public async Task<IActionResult> Create([Bind("ClientId,BookId,DevolutionDate,Amount")] Loan loan)
     {
         if (ModelState.IsValid)
         {
@@ -130,8 +131,8 @@ public class LoanController : Controller
             return RedirectToAction(nameof(Index));
         }
 
-        await PopulateBooksDropDownList(loan.Book_Id);
-        await ListOfClientsDropdown(loan.Client_Id);
+        await PopulateBooksDropDownList(loan.BookId);
+        await ListOfClientsDropdown(loan.ClientId);
 
         // 2. Obtener la lista de préstamos existentes para renderizar la tabla
         var loans_x = await _context.loans
@@ -158,7 +159,7 @@ public class LoanController : Controller
         if (loans_x == null)
             return NotFound();
         
-        await PopulateBooksDropDownList(loans_x.Book_Id);
+        await PopulateBooksDropDownList(loans_x.BookId);
         
         return View(loans_x);
     }
@@ -188,7 +189,7 @@ public class LoanController : Controller
         if (await TryUpdateModelAsync<Loan>(
                 loanToUpdate,
                 "",         // Prefix (empty if there isn't prefix on the form)
-                l => l.Book_Id, 
+                l => l.BookId, 
                 l => l.DevolutionDate, 
                 l => l.Amount
             )
@@ -211,7 +212,7 @@ public class LoanController : Controller
             }
         }
         // If the model it not valid or TryUpdateModelAsync fails.
-        await PopulateBooksDropDownList(loanToUpdate.Book_Id); 
+        await PopulateBooksDropDownList(loanToUpdate.BookId); 
         return View(loanToUpdate);
     }
     

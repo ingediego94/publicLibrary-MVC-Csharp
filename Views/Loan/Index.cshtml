@@ -7,37 +7,41 @@
     <div class="col-md-3">
         <div class="card">
             <div class="card-body">
-                
+
                 @* modify this 'asp-action="Create" for the specific method to creating *@
-                <form asp-action="Create">
+                <form asp-action="Create" method="post">
+                    
+                    @Html.AntiForgeryToken()   
+                    @* PENDIENTE *@
+                    
                     <h5>Adding a new Loan</h5>
 
                     @* Loan Client_Id *@
                     <div class="mt-3 d-flex flex-column">
-                        <label for="Client_Id">Client Name</label>
-                        <select id="Client_Id"
+                        <label for="ClientId">Client Name</label>
+                        <select id="ClientId"
                                 class="form-control"
-                                name="Client_Id"
+                                name="ClientId"
                                 asp-items="@(ViewData["ClientId"] as SelectList)"
                                 required>
                             <option value="">-- Select a client --</option>
                         </select>
                     </div>
-                    
+
                     @* Loan Book_Id *@
                     <div class="mt-3 d-flex flex-column">
-                        <label for="Book_Id">Book Id</label>
-                        <select id="Book_Id"
+                        <label for="BookId">Book Title</label>
+                        <select id="BookId"
                                 class="form-control"
-                                name="Book_Id"
+                                name="BookId"
                                 asp-items="@(ViewData["BookId"] as SelectList)"
                                 required>
                             <option value="">-- Select a book --</option>
                         </select>
                     </div>
-                    
-                    
-                    
+
+
+
                     @* <div class="mt-3 d-flex flex-column"> *@
                     @*     <label for="Book_Id">Book Title</label> *@
                     @*     <select id="Book_Id" class="form-control" name="Book_Id" required> *@
@@ -67,11 +71,11 @@
                 </form>
             </div>
         </div>
-    </div>    
-    
-    
+    </div>
+
+
     <div class="col-md-9">
-    
+
         <table class="table table-striped">
             <!--Headers-->
             <thead>
@@ -84,15 +88,15 @@
                     <th scope="col">ACTIONS</th>
                 </tr>
             </thead>
-    
+
             <!--Body-->
             <tbody>
             @foreach (var item in Model)
             {
                 <tr>
                     <th scope="row">@item.Id</th>
-                    <td>@item.Book.Title</td>
                     <td>@item.Client.Name</td>
+                    <td>@item.Book.Title</td>
                     <td>@item.DevolutionDate</td>
                     <td>@item.Amount</td>
                     <td class="d-flex flex-row gap-1">
@@ -111,8 +115,8 @@
                 </tr>
             }
             </tbody>
-    
+
         </table>
     </div>
-    
+
 </div>
