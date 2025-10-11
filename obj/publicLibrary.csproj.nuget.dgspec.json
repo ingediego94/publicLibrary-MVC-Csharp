@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/publicLibrary.csproj": {}
+    "F:\\Programacion\\RIWI\\publicLibrary-MVC-Csharp\\publicLibrary.csproj": {}
   },
   "projects": {
-    "/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/publicLibrary.csproj": {
+    "F:\\Programacion\\RIWI\\publicLibrary-MVC-Csharp\\publicLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/publicLibrary.csproj",
+        "projectUniqueName": "F:\\Programacion\\RIWI\\publicLibrary-MVC-Csharp\\publicLibrary.csproj",
         "projectName": "publicLibrary",
-        "projectPath": "/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/publicLibrary.csproj",
-        "packagesPath": "/home/diego_dev/.nuget/packages/",
-        "outputPath": "/home/diego_dev/Documents/diego_dev/publicLibrary-MVC-Csharp/obj/",
+        "projectPath": "F:\\Programacion\\RIWI\\publicLibrary-MVC-Csharp\\publicLibrary.csproj",
+        "packagesPath": "C:\\Users\\57350\\.nuget\\packages\\",
+        "outputPath": "F:\\Programacion\\RIWI\\publicLibrary-MVC-Csharp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/diego_dev/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\57350\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -77,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.414/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
